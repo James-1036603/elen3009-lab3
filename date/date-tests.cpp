@@ -79,6 +79,24 @@ TEST_CASE("Dates with unidentical days are not equal"){
 // Exercise 2.4
 // Provide tests for a new member function of the Date class
 // which will increase the date by one day.
+TEST_CASE("Date increases by one day"){
+	Date date_1(6, Month::May, 2007);
+	Date date_2(7, Month::May, 2007);
+	date_1 = date_1.FindNextDate();
+	CHECK(date_1==date_2);
+}
+TEST_CASE("Check that the month changes when getting the next date"){
+	Date date_1(31, Month::May, 2007);
+        Date date_2(1, Month::June, 2007);
+        date_1 = date_1.FindNextDate();
+        CHECK(date_1==date_2);
+}
+TEST_CASE("Check that the year increases when getting the next date"){
+	Date date_1(31, Month::December, 2007);
+        Date date_2(1, Month::January, 2008);
+        date_1 = date_1.FindNextDate();
+        CHECK(date_1==date_2);
+}
 
 
 // Exercise 2.5

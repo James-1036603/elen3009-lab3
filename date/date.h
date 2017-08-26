@@ -39,6 +39,8 @@ public:
 	bool isLeapYear () const;	
 	//Operaor overload
 	bool operator==(const Date& rhs) const;
+	//Find next date
+	Date FindNextDate();
 
 private:
 	// return the number of days in the _month
@@ -47,7 +49,10 @@ private:
 	int	_day;
 	Month _month;
 	int	_year;
-	
+	//Date to number
+	int DateToNumberOfDays() const;
+	//Number to date
+	Date NumberToDate(const int& number);	
 
 };
 
