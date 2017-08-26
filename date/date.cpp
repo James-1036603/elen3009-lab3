@@ -73,4 +73,32 @@ bool Date::operator==(const Date& rhs) const
 	if(_day==rhs._day && _month == rhs._month && _year == rhs._year) return true;
 	else return false;
 }
+//Date to number
+//NOTE: Algorithm adapted from http://www.c-jump.com/CIS60/hw3.htm
+int Date::DateToNumberOfDays() const {
+	int a = (14-static_cast<int>(_month))/12;
+	int m = static_cast<int>(_month)+12*a-3;
+	int y = _year +4800-a;
+	return _day+ (153*m+2)/5+365*y +y/4 -y/100 + y/400 - 32044;
+}
 
+Date Date::NumberToDate(const int& number){
+	int a = number+32044;
+	int b = (4*a +3)/146097;
+	int c = a-(146097*b)/4;
+	int d = (4*c+3)/1461;
+	int e = c-(1461*d)/4;
+	int m  = (5*e+2)/153;
+	int day = e-(153*m+2)/5 +1;
+	int month = m+3 -12*(m/10);
+	int year = 100*b + d-4800+ m/10;
+	Date tempDate(day,static_cast<Month>(month), year);
+
+	return tempDate;
+}
+
+
+
+Date Date::FindNextDate(){
+	return Date::NumberToDate(Date::DateToNumberOfDays());
+}
