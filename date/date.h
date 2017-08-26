@@ -6,6 +6,7 @@
 #include <cassert>
 #include <iostream>
 using namespace std;
+class DateNotValid {};
 
 enum class Month 
 {

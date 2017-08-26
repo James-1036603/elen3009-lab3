@@ -33,7 +33,13 @@ TEST_CASE("Valid Date is initialised correctly") {
 // verify that an exception is thrown when an attempt is made
 // to construct an invalid date. Think carefully about which
 // invalid dates to test.
+TEST_CASE("Invalid Date- too many days in month"){
+	CHECK_THROWS_AS(Date testDate(30, Month::February, 2000), DateNotValid);
+}
 
+TEST_CASE("Check date is valid"){
+	CHECK_NOTHROW(Date testDate(04, Month::April, 2012));
+}
 
 // Exercise 2.3
 //TEST_CASE("Identical Dates are Equal") {

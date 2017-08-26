@@ -2,7 +2,11 @@
 // Implementation of the Date class
 
 #include "date.h"
-Date::Date(const int& day, const Month& month, const int& year): _day{day}, _month{month}, _year{year} {}
+Date::Date(const int& day, const Month& month, const int& year): _day{day}, _month{month}, _year{year}
+{
+	if(_day>Date::daysInMonth() || Date::daysInMonth() == -1) throw DateNotValid();
+}
+
 int Date::day() const
 {
 	return _day;
