@@ -102,3 +102,16 @@ TEST_CASE("Check that the year increases when getting the next date"){
 // Exercise 2.5
 // Write tests for the new default constructor and the
 // setDefaultDate method.
+TEST_CASE("Check default date is initialised correctly"){
+        Date date_1;
+        Date date_2(1, Month::January, 2017);
+        CHECK(date_1==date_2);
+}
+
+TEST_CASE("Check default date is changed"){
+	Date date_1;
+	date_1.setDefaultDate(30, Month::August, 2017);
+	date_1=Date(30, Month::August, 2017);
+	Date date_2;
+	CHECK(date_1==date_2);
+}

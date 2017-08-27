@@ -2,6 +2,15 @@
 // Implementation of the Date class
 
 #include "date.h"
+Date Date::_default{1, Month::January, 2017};
+
+Date::Date(){
+	this->_day=_default.day();
+	this->_month=_default.month();
+	this->_year=_default.year();
+//Tried to say "this instance equals default" but with no luck, so set the individual members equal to the default. The problem is, if we are to change the default after initialising, the date would not update, but the date object would at least have a date which makes sense, and not bogus.	
+ }
+
 Date::Date(const int& day, const Month& month, const int& year): _day{day}, _month{month}, _year{year}
 {
 	if(_day>Date::daysInMonth() || Date::daysInMonth() == -1) throw DateNotValid();
@@ -101,4 +110,10 @@ Date Date::NumberToDate(const int& number){
 
 Date Date::FindNextDate(){
 	return Date::NumberToDate(Date::DateToNumberOfDays());
+}
+
+void Date::setDefaultDate(const int& day,const Month& month,const int& year){
+	_default._day = day;
+	_default._month = month;
+	_default._year = year;
 }

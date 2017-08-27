@@ -8,6 +8,8 @@
 using namespace std;
 class DateNotValid {};
 
+
+
 enum class Month 
 {
 	January = 1, 
@@ -27,6 +29,8 @@ enum class Month
 class Date
 {
 public:
+	//Default Constructor
+	Date();	
 	//Constructor for date
 	Date(const int& day, const Month& month, const int& year);
 	// return the day of the month
@@ -41,6 +45,8 @@ public:
 	bool operator==(const Date& rhs) const;
 	//Find next date
 	Date FindNextDate();
+	//Set default date
+	static void setDefaultDate(const int& day,const Month& month,const int& year);
 
 private:
 	// return the number of days in the _month
@@ -53,10 +59,11 @@ private:
 	int DateToNumberOfDays() const;
 	//Number to date
 	Date NumberToDate(const int& number);	
+	//Stastic Default date
+	static Date _default;
 
 };
 
 // standalone function for printing the date
 void printDate(const Date& date);
-
 #endif
